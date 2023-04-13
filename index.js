@@ -23,7 +23,16 @@ app.get('/', (req, res)=>{
     
 })
 
-
+app.get('/edit-usuario/:id', (req, res)=>{
+    usuario.findAll({
+        where: {'id': req.params.id}
+    }).then((user)=>{
+        res.render('edit_usuario', {user: user.map(user=> user.toJSON())})
+    }).catch((erro)=>{
+        console.log('ocorreu um erro ao buscar este registro'+erro)
+    })
+    
+})
 app.get('/del-usuario/:id', (req, res)=>{
     usuario.destroy({
         where: { 'id': req.params.id}
@@ -50,7 +59,19 @@ app.post('/add-usuario', (req, res)=>{
     res.redirect('/')
 })
 
-
+app.post('/update-usuario/:id', (req, res)=>{
+    usuario.update({ 
+        nome: req.body.name,
+        idade: req.body.idade,
+        email: req.body.email
+    },{
+        where: { 'id': req.params.id}
+    }).then(()=>{
+        res.redirect('/')
+    }).catch((erro)=>{
+        console.log('não foi possivel alterar registro'+erro)
+    })
+})
 
 app.listen(8080, ()=>{
     console.log('app rodando')
