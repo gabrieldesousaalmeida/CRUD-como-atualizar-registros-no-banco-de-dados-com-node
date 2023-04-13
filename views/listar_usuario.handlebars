@@ -1,0 +1,12 @@
+<h1>Listar Usuarios</h1>
+<a href="/cad-usuario"><button>Cadastrar</button></a>
+<hr>
+{{#each usuarios}}
+    <h2>Nome:</h2> {{nome}} <br>
+    <h2>Email:</h2> {{email}}<br>
+    <h2>Idade:</h2> {{idade}} <br>
+    <h2>Criado: </h2>{{ createdAt }}<br><br>
+    <a href='/del-usuario/{{id}}'><button>Apagar</button></a>
+    <a href='/edit-usuario/{{id}}'><button>Editar</button></a>
+    <hr>
+{{/each}}

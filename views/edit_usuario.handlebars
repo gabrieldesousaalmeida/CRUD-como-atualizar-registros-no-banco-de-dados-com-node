@@ -1,0 +1,12 @@
+<h1>Editar Usuario</h1>
+{{#each user}}
+<form action="/update-usuario/{{id}}" method="post">
+    <label>Nome</label>
+    <input type="text" name="name" value={{nome}}><br><br>
+    <label>email</label>
+    <input type="text" name="email" value={{email}}><br><br>
+    <label>idade</label>
+    <input type="text" name="idade" value={{idade}}><br><br>
+    <input type="submit" value="Atualizar">
+</form>
+{{/each}}
